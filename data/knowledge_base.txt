@@ -1,0 +1,45 @@
+# Knowledge Base for RAG PoC
+# Format: [Topic] Q: <question> A: <answer>
+
+[Onboarding]
+Q: What is the process for onboarding a new employee?
+A: New employees must complete HR documentation, attend orientation, and set up accounts within their first week.
+
+Q: What documents are needed for onboarding?
+A: Government-issued ID, signed offer letter, and completed tax and benefits forms.
+
+[Company Policies]
+Q: What is the company's leave policy?
+A: Employees are entitled to 20 days of paid leave per year, plus 10 public holidays.
+
+Q: Are remote work options available?
+A: Yes, employees can work remotely up to 3 days a week with manager approval.
+
+[Technical Support]
+Q: How do I reset my company email password?
+A: Visit the IT portal and click on 'Reset Password'. Follow the emailed instructions.
+
+Q: What should I do if my laptop is not working?
+A: Submit a support ticket via the IT Helpdesk with a description of the issue.
+
+[Development Guidelines]
+Q: What is the preferred code style for backend services?
+A: Follow the official Java code conventions and ensure unit tests have at least 80% coverage.
+
+Q: How do we name Git branches?
+A: Use the format: `feature/<ticket-id>-short-description` or `bugfix/<ticket-id>-short-description`.
+
+[Deployment Process]
+Q: How do I deploy a service to staging?
+A: Push to the `develop` branch. The CI/CD pipeline automatically deploys to staging.
+
+Q: What is the rollback procedure for production?
+A: Use the rollback script in the DevOps repository. Alert the incident response team if downtime is expected.
+
+[Security]
+Q: What is the policy on handling sensitive data?
+A: All sensitive data must be encrypted at rest and in transit. Only authorized personnel may access it.
+
+Q: How often should passwords be changed?
+A: Passwords must be changed every 90 days according to security policy.
+
