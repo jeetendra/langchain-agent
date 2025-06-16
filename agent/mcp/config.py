@@ -1,4 +1,5 @@
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def load_mcp_config():
     import json
@@ -13,7 +14,7 @@ def load_mcp_config():
     mcp_filesystem_dir = os.getenv("MCP_FILESYSTEM_DIR")
     if not mcp_filesystem_dir:
         raise ValueError("MCP_FILESYSTEM_DIR environment variable is not set.")
-    config["mcpServers"]["filesystem"]["args"][1] = mcp_filesystem_dir
+    config["mcpServers"]["filesystem"]["args"][2] = mcp_filesystem_dir
     # Ensure the directory exists
     if not Path(mcp_filesystem_dir).exists():
         raise FileNotFoundError(f"The directory {mcp_filesystem_dir} does not exist.")
