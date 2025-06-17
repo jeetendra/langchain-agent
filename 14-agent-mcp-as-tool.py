@@ -12,7 +12,6 @@ from langchain_mcp_adapters.client import MultiServerMCPClient, Connection
 from langchain_mcp_adapters.sessions import StdioConnection
 import asyncio
 
-
 load_dotenv()
 
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY") or ""
@@ -22,18 +21,13 @@ connection = {
     "transport": 'stdio',
     "command": "npx", 
     "args": ["-y", "@modelcontextprotocol/server-filesystem", MCP_FILESYSTEM_DIR],
-    # "env": None,
-    # "cwd" : None,
-    # "encoding_error_handler" : "strict",
-    # "session_kwargs" : None,
-    # "encoding": 
 }
 
 async def main():
     # TODO: fix types issue 
     mcp_client = MultiServerMCPClient({
         "filesystem": connection
-    })
+    }) # type: ignore
     tools = await mcp_client.get_tools()
 
     # print(tools)
