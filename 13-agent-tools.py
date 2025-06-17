@@ -7,7 +7,7 @@ from typing import Annotated
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.graph import StateGraph, START, END
-from langchain_core.messages import AnyMessage, HumanMessage
+from langchain_core.messages import HumanMessage, BaseMessage
 from langchain_tavily.tavily_search import  TavilySearch
 
 load_dotenv()
@@ -26,10 +26,10 @@ llm = init_chat_model(
 llm_with_tools = llm.bind_tools(tools=tools)
 
 class State(TypedDict):
-    messages: Annotated[list[AnyMessage], add_messages]
+    messages: Annotated[list[BaseMessage], add_messages]
 
 def chat(state: State) -> State:
-    return {"messages": llm_with_tools.invoke(state["messages"])}
+    return {"messages":[llm_with_tools.invoke(state["messages"])]}
 
 builder = StateGraph(State)
 builder.add_node("assistant", chat)
@@ -41,5 +41,5 @@ builder.add_edge("assistant", END)
 
 graph = builder.compile()
 
-result = graph.invoke({"messages": [HumanMessage(content="What is the latest news about India?")]})
+result = graph.invoke({"messages": [HumanMessage(content="What is the latest news about GenAI?")]})
 print(result["messages"][-1].content)
